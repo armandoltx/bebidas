@@ -1,6 +1,18 @@
-import React from 'react';
+import React, { useContext }  from 'react';
+import { CategoriasContext } from '../context/CategoriasContext';
 
 const Formulario = () => {
+
+
+  // para poder consumir los datos que fluyen desde el context (CategoeriasContext)
+  // hay q usar el hook useContext.
+  // useContext toma un context, en este caso CategoriasContext, lo importamos y lo usamos.
+  // ya tenemos disponible todo lo q este en el objeto value del provider
+  const { saludo } = useContext(CategoriasContext);
+
+  alert(saludo);
+
+
   return (
     <form className="col-12">
       <fieldset className="text-center">
