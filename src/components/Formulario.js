@@ -8,9 +8,11 @@ const Formulario = () => {
   // hay q usar el hook useContext.
   // useContext toma un context, en este caso CategoriasContext, lo importamos y lo usamos.
   // ya tenemos disponible todo lo q este en el objeto value del provider
-  const { saludo } = useContext(CategoriasContext);
+  const { categorias } = useContext(CategoriasContext);
 
-  alert(saludo);
+  console.log("desde formulario", categorias);
+
+
 
 
   return (
