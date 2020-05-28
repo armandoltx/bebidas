@@ -5,17 +5,17 @@ import axios from "axios";
 
 // Crear el Context
 export const CategoriasContext = createContext();
-// createContext, crea el context y lo agregamos a la funcion CategoriasContext
+// createContext es una funcion, crea el context y lo agregamos a la funcion CategoriasContext
 // Siempre que se crea un context, se crea un provider,
-// es desde donde van a salir (fluyen) los datos y las funciones
+// es desde donde van a salir (fluyen) el sttate (los datos) y las funciones
 // que son consumidas en los componentes (header, formulario ...)
 
 // Provider es donde se encuentran las funciones y el state
 const CategoriasProvider = (props) => {
-// siempre se le pasa props
+// siempre se le pasa props para hacer referencia a los componentes hijos con algo llamado props.children
 
   // Crear el state del context
-  const [ categorias, guardarCategorias ] = useState();
+  const [ categorias, guardarCategorias ] = useState([]);
 
   // ejecutar la llamada a la API
   // para ello usamos useEffect y Axios
