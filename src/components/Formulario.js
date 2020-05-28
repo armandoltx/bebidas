@@ -20,7 +20,7 @@ const Formulario = () => {
 
   // hacemos lo mismo con RecetasContext
   // entre las llaves se extrae lo requeramos, que esta dentro del objeto value en el provider
-  const { buscarRecetas } = useContext(RecetasContext);
+  const { buscarRecetas, guardarConsultar } = useContext(RecetasContext);
 
   console.log("desde formulario", categorias);
 
@@ -40,7 +40,8 @@ const Formulario = () => {
       className="col-12"
       onSubmit={ e => {
         e.preventDefault();
-        buscarRecetas(busqueda)
+        buscarRecetas(busqueda);
+        guardarConsultar(true);
       }}
     >
       <fieldset className="text-center">
