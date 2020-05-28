@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { CategoriasContext } from '../context/CategoriasContext';
+import { RecetasContext } from '../context/RecetasContext';
 
 const Formulario = () => {
 
@@ -17,6 +18,10 @@ const Formulario = () => {
   // ya tenemos disponible todo lo q este en el objeto value del provider
   const { categorias } = useContext(CategoriasContext);
 
+  // hacemos lo mismo con RecetasContext
+  // entre las llaves se extrae lo requeramos, que esta dentro del objeto value en el provider
+  const { buscarRecetas } = useContext(RecetasContext);
+
   console.log("desde formulario", categorias);
 
   // leemos los contenidos del formulario usando el state local:
@@ -31,7 +36,13 @@ const Formulario = () => {
 
 
   return (
-    <form className="col-12">
+    <form
+      className="col-12"
+      onSubmit={ e => {
+        e.preventDefault();
+        buscarRecetas(busqueda)
+      }}
+    >
       <fieldset className="text-center">
         <legend>Busca Bebidas por Categoria o Ingrediente</legend>
       </fieldset>

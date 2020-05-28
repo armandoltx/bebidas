@@ -2,19 +2,25 @@ import React from 'react';
 import Header from './components/Header';
 import Formulario from './components/Formulario';
 
-import CategoriasProvider, { CategoriasContext } from './context/CategoriasContext';
+import CategoriasProvider from './context/CategoriasContext';
+import RecetasProvider from './context/RecetasContext';
 
 function App() {
   return (
   // al meter todo dentro de CategoriasProvider, cualquier componente Head, Formulario... tiene acceso al objeto value en CategortiasContext
-    <CategoriasProvider>
-      <Header />
 
-      <div className="container mt-5">
-        <div className="row">
-          <Formulario />
+  // cuando tienes mas de un provider, si quieres acceder a todos los componenetes se pone como lo tenemos, da igual
+  // el orden
+    <CategoriasProvider>
+      <RecetasProvider>
+        <Header />
+
+        <div className="container mt-5">
+          <div className="row">
+            <Formulario />
+          </div>
         </div>
-      </div>
+      </RecetasProvider>
     </CategoriasProvider>
   );
 }
