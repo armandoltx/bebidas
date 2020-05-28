@@ -1,7 +1,14 @@
-import React, { useContext }  from 'react';
+import React, { useContext, useState } from 'react';
 import { CategoriasContext } from '../context/CategoriasContext';
 
 const Formulario = () => {
+
+  // creamos un state local que no se podra pasar por los componentes
+  // en este caso lo que queremos es acceder a lo que el usuario escribe en el formulario
+  const [ busqueda, guardarBusqueda ] = useState({
+    nombre: '',
+    categoria: ''
+  });
 
 
   // para poder consumir los datos que fluyen desde el context (CategoeriasContext)
@@ -11,6 +18,14 @@ const Formulario = () => {
   const { categorias } = useContext(CategoriasContext);
 
   console.log("desde formulario", categorias);
+
+  // leemos los contenidos del formulario usando el state local:
+  const obtenerDatosReceta = (e) => {
+    guardarBusqueda({
+      ...busqueda,
+      [e.target.name] : e.target.value
+    })
+  }
 
 
 
@@ -28,6 +43,7 @@ const Formulario = () => {
             className="form-control"
             type="text"
             placeholder="Buscar por Ingrediente"
+            onChange={obtenerDatosReceta}
           />
         </div>
 
@@ -35,6 +51,7 @@ const Formulario = () => {
           <select
             className="form-control"
             name="categoria"
+            onChange={obtenerDatosReceta}
           >
             <option value="">-- Selecciona Categoria --</option>
             {categorias.map(categoria => (
