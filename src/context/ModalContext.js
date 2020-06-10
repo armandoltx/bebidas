@@ -11,7 +11,7 @@ const ModalProvider = (props) => {
   const [ idreceta, guardarIdReceta ] = useState(null); // no va a ver ninguna seleccionada
 
   // creamos otro state para guardar la receta que viene de la API en resultado
-  const [ receta, guardarReceta ] = useState({});
+  const [informacion, guardarReceta ] = useState({});
 
   // una vez que tenemos la id de la receta gracias a guardarIdReceta queremos hacer
   // una llamada a la API
@@ -36,6 +36,8 @@ const ModalProvider = (props) => {
   return (
     <ModalContext.Provider
       value={{
+        informacion,
+        guardarReceta,
         guardarIdReceta,
       }}
     >
